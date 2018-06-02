@@ -88,6 +88,9 @@ context_color() {
             --context)
                 args="${args}-c "
                 ;;
+            --number)
+                args="${args}-n "
+                ;;
             *)
                 args="$args $arg"
                 ;;
@@ -96,7 +99,7 @@ context_color() {
 
     eval set -- $args
 
-    while getopts "hbpc:" OPTION
+    while getopts "hbpnc:" OPTION
     do
          case $OPTION in
          h)
@@ -112,10 +115,17 @@ context_color() {
          c)
              CONTEXT="$OPTARG"
              ;;
+         n)
+             ONLY_COLOR=1
+             ;;
          esac
     done
 
-    printf "$(__context_color_sequence)"
+    if [[ ! -z $ONLY_COLOR ]]; then
+        printf "$(__context_color_number)"
+    else
+        printf "$(__context_color_sequence)"
+    fi
     return 0
 }
 
