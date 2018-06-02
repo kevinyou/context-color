@@ -115,7 +115,7 @@ context_color() {
          esac
     done
 
-    echo -n "$(__context_color_sequence)"
+    printf "$(__context_color_sequence)"
     return 0
 }
 
