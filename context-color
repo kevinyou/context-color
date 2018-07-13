@@ -42,7 +42,7 @@ __context_color_count() {
 }
 
 __context_color_hash() {
-    eval "$CONTEXT" | sum | cut -d' ' -f1
+    expr $((0x$(eval "$CONTEXT" | md5sum | head -c 6)))
 }
 
 __context_color_number() {
