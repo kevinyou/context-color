@@ -121,7 +121,7 @@ context_color() {
          esac
     done
 
-    if [[ ! -z $ONLY_COLOR ]]; then
+    if [ ! -z $ONLY_COLOR ]; then
         printf "$(__context_color_number)"
     else
         printf "$(__context_color_sequence)"
